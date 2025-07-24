@@ -1,13 +1,13 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:755231492299:task-definition/nodejs-app-task-definition:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:755231492299:task-definition/nodejs-app-task-definition-new:1",
     "containerDefinitions": [
         {
-            "name": "workaround-nodejs-app",
-            "image": "755231492299.dkr.ecr.us-east-1.amazonaws.com/nodejs-app-0552:latest",
+            "name": "workaround-nodejs-app-new",
+            "image": "755231492299.dkr.ecr.us-east-1.amazonaws.com/nodejs-app-0552:new-latest",
             "cpu": 0,
             "portMappings": [
                 {
-                    "name": "nodejs-app-5000-tcp",
+                    "name": "work-nodejs-app-5000-tcp",
                     "containerPort": 5000,
                     "hostPort": 5000,
                     "protocol": "tcp",
@@ -23,7 +23,7 @@
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "/ecs/nodejs-app-task-definition",
+                    "awslogs-group": "/ecs/nodejs-app-task-definition-new",
                     "awslogs-create-group": "true",
                     "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
@@ -33,7 +33,8 @@
             "systemControls": []
         }
     ],
-    "family": "nodejs-app-task-definition",
+    "family": "nodejs-app-task-definition-new",
+    "taskRoleArn": "arn:aws:iam::755231492299:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::755231492299:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
     "revision": 1,
@@ -51,6 +52,9 @@
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
         },
         {
             "name": "ecs.capability.execution-role-ecr-pull"
@@ -79,7 +83,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2025-07-24T04:21:30.962Z",
+    "registeredAt": "2025-07-24T06:29:33.189Z",
     "registeredBy": "arn:aws:iam::755231492299:root",
     "enableFaultInjection": false,
     "tags": []
